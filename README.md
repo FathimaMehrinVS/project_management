@@ -1,4 +1,4 @@
-# Project Hub 🚀
+# PROJECT MANAGEMENT DASHBOARD
 
 A modern, responsive, and secure **Project Management Dashboard** built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS v4**. It features a state-of-the-art **Glassmorphism Dark UI** and implements strict **Role-Based Access Control (RBAC)** to secure resource permissions. 
 
