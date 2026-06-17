@@ -90,8 +90,23 @@ function getUserFromHeader(authHeader: string | undefined): User | null {
   if (!token.startsWith('mock-jwt-token-for-')) {
     return null;
   }
-  const email = token.replace('mock-jwt-token-for-', '');
-  return MOCK_USERS.find((u) => u.email === email) || null;
+  const email = token.replace('mock-jwt-token-for-', '').toLowerCase();
+  let user = MOCK_USERS.find((u) => u.email.toLowerCase() === email);
+  if (!user) {
+    const role = email === 'admin@example.com'
+      ? 'admin'
+      : email === 'manager@example.com'
+        ? 'manager'
+        : 'user';
+    user = {
+      id: `user-${Date.now()}`,
+      email,
+      role,
+      name: email.split('@')[0],
+    };
+    MOCK_USERS.push(user);
+  }
+  return user;
 }
 
 // Helper to send JSON response
@@ -124,11 +139,23 @@ export function mockApiMiddleware(): Connect.NextHandleFunction {
         return sendJSON(res, 400, { error: 'Email and password are required' });
       }
 
-      // In a real app we'd verify password. For mock purposes, we allow any password but require a valid mock email.
-      const foundUser = MOCK_USERS.find((u) => u.email.toLowerCase() === email.toLowerCase());
+      // In a real app we'd verify password. For mock purposes, we allow any password.
+      let foundUser = MOCK_USERS.find((u) => u.email.toLowerCase() === email.toLowerCase());
 
       if (!foundUser) {
-        return sendJSON(res, 401, { error: 'Invalid credentials. Try admin@example.com, manager@example.com, or user@example.com' });
+        const role = email.toLowerCase() === 'admin@example.com'
+          ? 'admin'
+          : email.toLowerCase() === 'manager@example.com'
+            ? 'manager'
+            : 'user';
+
+        foundUser = {
+          id: `user-${Date.now()}`,
+          email: email.toLowerCase(),
+          role,
+          name: email.split('@')[0],
+        };
+        MOCK_USERS.push(foundUser);
       }
 
       // Generate a mock JWT token that embeds the user email

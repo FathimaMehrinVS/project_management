@@ -25,36 +25,30 @@ export default function LoginPage() {
     }
   }
 
-  // Helper to pre-fill test credentials
-  const fillCredentials = (testEmail: string) => {
-    setEmail(testEmail)
-    setPassword('password')
-  };
-
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-radial from-slate-900 via-neutral-950 to-black">
+    <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 bg-[#f5f2eb]">
       <div className="w-full max-w-md">
         {/* Logo/Brand Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400 mb-4 shadow-[0_0_20px_rgba(99,102,241,0.15)]">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 mb-4 shadow-sm">
             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
             Project Hub
           </h1>
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-slate-500">
             Sign in to access your projects and dashboard
           </p>
         </div>
 
         {/* Login Form Card */}
-        <div className="glass-panel rounded-3xl shadow-2xl p-8 backdrop-blur-xl">
+        <div className="glass-panel rounded-3xl p-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
-              <div className="rounded-xl bg-rose-500/10 border border-rose-500/20 p-4 text-sm text-rose-400 flex items-start space-x-3">
-                <svg className="w-5 h-5 text-rose-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="rounded-xl bg-rose-50 border border-rose-200 p-4 text-sm text-rose-600 flex items-start space-x-3">
+                <svg className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>{error}</span>
@@ -62,12 +56,12 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="email" className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
                 Email Address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg className="h-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                   </svg>
                 </div>
@@ -79,19 +73,19 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 border border-slate-800 rounded-xl bg-slate-950/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition duration-150 ease-in-out text-sm"
+                  className="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-xl bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition duration-150 ease-in-out text-sm"
                   placeholder="name@example.com"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+              <label htmlFor="password" className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
                 Password
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg className="h-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                 </div>
@@ -103,7 +97,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 border border-slate-800 rounded-xl bg-slate-950/50 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition duration-150 ease-in-out text-sm"
+                  className="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-xl bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition duration-150 ease-in-out text-sm"
                   placeholder="••••••••"
                 />
               </div>
@@ -113,7 +107,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-indigo-500 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(99,102,241,0.3)] cursor-pointer"
+                className="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed shadow-sm cursor-pointer"
               >
                 {loading ? (
                   <div className="flex items-center space-x-2">
@@ -129,57 +123,6 @@ export default function LoginPage() {
               </button>
             </div>
           </form>
-
-          {/* RBAC Tester helper box */}
-          <div className="mt-8 pt-6 border-t border-slate-800/60">
-            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
-              Test Accounts (RBAC)
-            </h3>
-            <p className="text-xs text-slate-500 mb-3 leading-relaxed">
-              Click any account below to pre-fill credentials and test different role behaviors:
-            </p>
-            <div className="space-y-2">
-              <button
-                onClick={() => fillCredentials('admin@example.com')}
-                type="button"
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-800/50 bg-slate-950/20 hover:bg-slate-900/60 transition text-left text-xs cursor-pointer group"
-              >
-                <div>
-                  <span className="font-semibold text-slate-300">Admin</span>
-                  <span className="block text-[10px] text-slate-500">Full control (Delete allowed)</span>
-                </div>
-                <span className="text-[10px] bg-red-500/10 border border-red-500/20 text-red-400 px-2 py-0.5 rounded-full font-medium group-hover:bg-red-500/20">
-                  admin@example.com
-                </span>
-              </button>
-              <button
-                onClick={() => fillCredentials('manager@example.com')}
-                type="button"
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-800/50 bg-slate-950/20 hover:bg-slate-900/60 transition text-left text-xs cursor-pointer group"
-              >
-                <div>
-                  <span className="font-semibold text-slate-300">Manager</span>
-                  <span className="block text-[10px] text-slate-500">Edit all (No delete)</span>
-                </div>
-                <span className="text-[10px] bg-amber-500/10 border border-amber-500/20 text-amber-400 px-2 py-0.5 rounded-full font-medium group-hover:bg-amber-500/20">
-                  manager@example.com
-                </span>
-              </button>
-              <button
-                onClick={() => fillCredentials('user@example.com')}
-                type="button"
-                className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl border border-slate-800/50 bg-slate-950/20 hover:bg-slate-900/60 transition text-left text-xs cursor-pointer group"
-              >
-                <div>
-                  <span className="font-semibold text-slate-300">User</span>
-                  <span className="block text-[10px] text-slate-500">Manage own projects only</span>
-                </div>
-                <span className="text-[10px] bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full font-medium group-hover:bg-emerald-500/20">
-                  user@example.com
-                </span>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
